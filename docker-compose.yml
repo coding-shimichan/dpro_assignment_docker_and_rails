@@ -2,11 +2,14 @@ services:
   db:
     image: postgres
     environment:
-      # POSTGRES_USER: postgresuser
       POSTGRES_PASSWORD: password
       POSTGRES_DB: sample_app_development
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - type: volume
+        source: db_data
+        target: /var/lib/postgresql/data
+        volume:
+          nocopy: true
     networks:
       - app_network
   web:
@@ -19,7 +22,6 @@ services:
     depends_on:
       - db
     environment:
-      # POSTGRES_USER: postgresuser
       POSTGRES_PASSWORD: password
     networks:
       - app_network
