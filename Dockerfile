@@ -18,6 +18,6 @@ RUN chmod +x /usr/bin/entrypoint.sh
 # ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 ENV LISTENING_PORT = $PORT || 3000
-CMD ["rails", "server", "-b", "0.0.0.0", "-p", $LISTENING_PORT]
+CMD ["bash", "-c", "rails server -b 0.0.0.0 -p $LISTENING_PORT"]
 
 # CMD ["rails", "server", "-b", "0.0.0.0", "-p", $PORT]
