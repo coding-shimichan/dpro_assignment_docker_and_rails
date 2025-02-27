@@ -22,6 +22,7 @@ services:
     depends_on:
       - db
     environment:
+      PORT: 3000
       POSTGRES_PASSWORD: password
     networks:
       - app_network
